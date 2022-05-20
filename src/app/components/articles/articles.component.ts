@@ -33,6 +33,8 @@ constructor(private cartService : CartService, private router : Router){}
    addToCart(articleId:number, quantity:number){
  this.cartService.updateCart(articleId, quantity);
 // this.router.navigateByUrl('cart');
+console.log(this.articles);
+console.log(quantity);
    }
 
    changeBtn(){

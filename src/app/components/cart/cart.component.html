@@ -19,8 +19,8 @@
           <span>{{article.price*article.qty}}</span>
         </li>
       </div>
-      <div *ngIf="totalCart!=0"><h4>Votre panier est actuellement vide</h4></div>
-      <div *ngIf="totalCart!=0">
+      <div *ngIf="totalCart==0"><h4>Votre panier est vide</h4></div>
+      <div *ngIf="totalCart>=0">
         <hr width=100%>
         <li
           class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
@@ -37,7 +37,6 @@
         <span><strong>{{totalCart}}.00 €</strong></span>
       </li>
     </div>
-    <div *ngIf="totalCart==0"><h4>Votre panier est vide</h4></div>
       </ul>
     </div>
   </div>

@@ -1,35 +1,76 @@
-<ng-container
- class="card">
-<form #form="ngForm" (ngSubmit)="onSaveCustomer(form.value)">
+<ng-container class="card">
+  <table id="shoppingCart" class="table table-stripped table-hover">
+    <!-- head -->
+    <thead>
+      <tr class="bg-white">
+        <th style><h4>Formulaire d'enregistrement</h4></th>
+      </tr>
+    </thead>
 
-<div class="form-group">
-<label class="control-label">Nom</label>
-<input type="text" name="lastName" class="form-control" [(ngModel)]="cartService.getCustomer().lastName">
-</div>
-
-<div class="form-group">
-  <label class="control-label">Prenom</label>
-  <input type="text" name="firstName" class="form-control" [(ngModel)]="cartService.getCustomer().firstName">
-  </div>
-
-  <div class="form-group">
-    <label class="control-label">Adresse</label>
-    <input type="text" name="adress" class="form-control" [(ngModel)]="cartService.getCustomer().adress">
-    </div>
-
-    <div class="form-group">
-      <label class="control-label">Telephone</label>
-      <input type="text" name="phone" class="form-control" [(ngModel)]="cartService.getCustomer().phone">
-      </div>
-
-      <div class="form-group">
-        <label class="control-label">Email</label>
-        <input type="text" name="mail" class="form-control" [(ngModel)]="cartService.getCustomer().mail">
+    <tbody>
+      <form #form="ngForm" (ngSubmit)="onSaveCustomer(form.value)">
+        <div class="form-group">
+          <label class="control-label">Nom</label>
+          <!-- <input type="text" name="lastName" class="form-control" [(ngModel)]="cartService.getCustomer().lastName"> -->
+          <input
+            type="text"
+            ngModel
+            name="lastName"
+            required
+            class="form-control"
+          />
         </div>
-<button type="submit" class="btn btn-primary"></button>
 
+        <div class="form-group">
+          <label class="control-label">Prenom</label>
+          <!-- <input type="text" name="firstName" class="form-control" [(ngModel)]="cartService.getCustomer().firstName"> -->
+          <input
+            type="text"
+            ngModel
+            name="firstName"
+            required
+            class="form-control"
+          />
+        </div>
 
-</form>
+        <div class="form-group">
+          <label class="control-label">Adresse</label>
+          <!-- <input type="text" name="adress" class="form-control" [(ngModel)]="cartService.getCustomer().adress"> -->
+          <input
+            type="text"
+            ngModel
+            name="adress"
+            required
+            class="form-control"
+          />
+        </div>
 
+        <div class="form-group">
+          <label class="control-label">Telephone</label>
+          <!-- <input type="text" name="phone" class="form-control" [(ngModel)]="cartService.getCustomer().phone"> -->
+          <input
+            type="text"
+            ngModel
+            name="phone"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label">Email</label>
+          <!-- <input type="text" name="mail" class="form-control" [(ngModel)]="cartService.getCustomer().mail"> -->
+          <input
+            type="text"
+            ngModel
+            name="mail"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary"></button>
+      </form>
+    </tbody>
+  </table>
 </ng-container>
-

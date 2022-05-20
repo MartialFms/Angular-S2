@@ -5,14 +5,19 @@ import { Customer } from '../model/customer';
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class CartService {
 
   cartArticles!: Article[];
   article : Article | undefined;
   totalCart : number | undefined;
+  customer : Customer | undefined;
 
 
   constructor() { }
+
 
 
 updateArticles(articles : Article[]){
@@ -38,9 +43,13 @@ getTotal(){
   }
 }
 
-clearCart(articles:Article[]){}
+clearCart(articles:Article[]){
 
-getCustomer(){}
+}
+
+getCustomer(){
+
+}
 }
 
 

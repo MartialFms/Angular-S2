@@ -10,7 +10,8 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CustomerComponent implements OnInit {
 
-  customers : Customer[] | undefined
+  customers! : Customer[]
+  customer! : Customer
   constructor(public cartService : CartService) { }
 
   ngOnInit(): void {
@@ -21,8 +22,12 @@ export class CustomerComponent implements OnInit {
     ];
   }
 
+  getCustomer(){}
+
   onSaveCustomer(customer : Customer){console.log(customer);
+    this.customers.push(this.customer)
   }
+
 
 }
 

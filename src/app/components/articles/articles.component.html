@@ -1,0 +1,55 @@
+<ng-container
+ class="card">
+
+  <table id="shoppingCart" class="table table-stripped table-hover">
+    <!-- head -->
+    <thead >
+      <tr class="bg-white">
+        <th style="width: 75%"><h4>Article</h4></th>
+        <th style="width: 15%"><h4>Prix</h4></th>
+        <th style="width: 10%"><h4>Quantité</h4></th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="articles" >
+
+      <!-- part 1 -->
+      <tr *ngFor="let article of articles ; let index = index" class="nth-child(2)">
+        <td data-th="Product" class="rounded">
+          <div class="row ">
+            <div class="col-md-4 text-left">
+              <img
+                src={{article.pict}}
+                alt=""
+                class="img-fluid d-none d-md-block hd4"
+              />
+            </div>
+            <div class="col-md-8 text-left mt-sm-2">
+              <h4>{{ article.name }}</h4>
+              <p class="font-weight-light">{{ article.desc }} </p>
+            </div>
+          </div>
+        </td>
+        <td data-th="Price" class="fontPrice rounded">€ {{ article.price }}</td>
+        <td data-th="Quantity" class="rounded">
+          <input
+            type="number"
+            class="text-center rounded-pill"
+            style="width:9em"
+            [(ngModel)]="quantity"[id]="index"
+            [ngStyle]="{'color':changeBtn()}"
+          />
+            <button class="btn btn-white border-secondary btn-md mb-2 shadow fontQty text-white" (click)="addToCart(article.id,article.qty)" [ngStyle]="{'background-color':changeBtn()}">
+              {{changeValue}}
+            </button>
+        </td>
+
+      </tr>
+
+    </tbody>
+    <tbody *ngIf="!articles">
+      <h4>Aucune formations disponnible pour le moment</h4>
+    </tbody>
+  </table>
+
+</ng-container>

@@ -1,0 +1,32 @@
+tr:nth-child(odd) {
+  background: rgb(212, 212, 212);
+  height: 4em;
+}
+
+tr:nth-child(even) {
+  background: rgb(159, 159, 159);
+}
+
+.fontPrice{
+  vertical-align: middle;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+
+.fontQty{
+  margin-top: 0.5em;
+  vertical-align: middle;
+  font-size: 0.95em;
+
+}
+
+.hd4{
+  max-width: 55%;
+}
+
+.ptop{
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
+
+

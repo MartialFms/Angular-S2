@@ -1,0 +1,35 @@
+<ng-container
+ class="card">
+<form #form="ngForm" (ngSubmit)="onSaveCustomer(form.value)">
+
+<div class="form-group">
+<label class="control-label">Nom</label>
+<input type="text" name="lastName" class="form-control" [(ngModel)]="cartService.getCustomer().lastName">
+</div>
+
+<div class="form-group">
+  <label class="control-label">Prenom</label>
+  <input type="text" name="firstName" class="form-control" [(ngModel)]="cartService.getCustomer().firstName">
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Adresse</label>
+    <input type="text" name="adress" class="form-control" [(ngModel)]="cartService.getCustomer().adress">
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Telephone</label>
+      <input type="text" name="phone" class="form-control" [(ngModel)]="cartService.getCustomer().phone">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Email</label>
+        <input type="text" name="mail" class="form-control" [(ngModel)]="cartService.getCustomer().mail">
+        </div>
+<button type="submit" class="btn btn-primary"></button>
+
+
+</form>
+
+</ng-container>
+

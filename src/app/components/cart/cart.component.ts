@@ -6,53 +6,52 @@ import { CartService } from 'src/app/services/cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  articles : Article[] | undefined;
+  articles: Article[] | undefined;
   article!: Article;
-  storageKey : string = "cartValue";
-  totalCart=0;
-  tva!:number;
-  constructor(private cartService : CartService, private router : Router) { }
+  storageKey: string = 'cartValue';
+  totalCart = 0;
+  tva!: number;
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit() {
-    this.articles=this.cartService.cartArticles;
-    this.totalCart=this.getTotal();
-    this.tva=this.tvaCollector();
+    this.articles = this.cartService.cartArticles;
+    this.storeCart();
+    this.totalCart = this.getTotal();
+    this.tva = this.tvaCollector();
   }
+
+  ngOnChanges(){}
 
   storeCart() {
     localStorage.setItem(this.storageKey, JSON.stringify(this.articles));
-
   }
 
   restoreCart() {
     this.articles = JSON.parse(localStorage.getItem(this.storageKey) || '{}');
   }
 
-  updateCart(){
+  updateCart() {
     this.cartService.updateCart(this.article?.id, this.article?.qty);
-    this.storeCart();
-      }
+    //this.storeCart();
+  }
 
-  getTotal(){
+  getTotal() {
     let total = 0;
     for (var i = 0; i < this.articles!.length; i++) {
-        if (this.articles![i].qty) {
-            total += this.articles![i].price*this.articles![i].qty;
-            this.totalCart = total;
-        }
+      if (this.articles![i].qty) {
+        total += this.articles![i].price * this.articles![i].qty;
+        this.totalCart = total;
+      }
     }
-    return total
+    return total;
   }
 
-  tvaCollector(){
-    let tva=0;
-    tva = this.totalCart*0.206
+  tvaCollector() {
+    let tva = 0;
+    tva = this.totalCart * 0.206;
     return tva;
   }
-
-  }
-
-
+}

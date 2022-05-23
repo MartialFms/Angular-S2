@@ -26,7 +26,8 @@ updateArticles(articles : Article[]){
 }
 
 updateCart(id:number, quantity:number){
-  // let targetArticle = this.cartArticles.find(item => item.id === id);
+  let targetArticle = this.cartArticles.find(item => item.id === id);
+  if(targetArticle)targetArticle.qty=0;
   // if(quantity > 0){targetArticle.qty+=quantity }
   // else if(quantity < 0){targetArticle.qty+=quantity- }
   // else{targetArticle.qty=quantity}

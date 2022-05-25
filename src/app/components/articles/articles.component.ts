@@ -1,6 +1,7 @@
-import { Component, Input, NgModule, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/model/article';
+import { ArticleService } from 'src/app/services/article.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -11,55 +12,20 @@ import { CartService } from 'src/app/services/cart.service';
 export class ArticlesComponent implements OnInit {
   changeValue!: string;
   articles: Article[] | undefined;
-  constructor(private cartService: CartService, private router: Router) {}
+  error=null;
+  constructor(private cartService: CartService, private router: Router, private articleService : ArticleService) {}
 
   ngOnInit() {
-    this.articles = [
-      {
-        id: 1,
-        name: 'C++',
-        desc: 'Formation en C et C++ sur 4 jours',
-        price: 120,
-        pict: 'assets/img/c.png',
-        qty: 0,
-      }, // test 2
-      {
-        id: 2,
-        name: 'Java Script',
-        desc: 'Formation sur Javascript sur 2 jours',
-        price: 80,
-        pict: 'assets/img/js.png',
-        qty: 0,
-      },
-      {
-        id: 3,
-        name: 'PHP',
-        desc: 'Formation à Php sur 3 jours',
-        price: 100,
-        pict: 'assets/img/ph.png',
-        qty: 0,
-      },
-      {
-        id: 4,
-        name: 'Python',
-        desc: 'Formation Python et Django sur 5 jours',
-        price: 180,
-        pict: 'assets/img/py.png',
-        qty: 0,
-      },
-      {
-        id: 5,
-        name: 'JAVA',
-        desc: 'Formation de Java SE 8 sur 5 jours',
-        price: 240,
-        pict: 'assets/img/jv.png',
-        qty: 0,
-      },
-    ];
-
-    this.cartService.updateArticles(this.articles);
+    this.getAllArticles();
   }
 
+  getAllArticles(){
+    this.articleService.getArticles().subscribe({
+      next: (data) => this.articles = data,
+      error: (err) => this.error = err.message,
+      complete:() => this.error = null
+    });
+  }
   addToCart(articleId: number, quantity: number) {
     this.cartService.updateCart(articleId, quantity);
     // this.router.navigateByUrl('cart');

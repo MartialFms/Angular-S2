@@ -48,9 +48,5 @@ clearCart(articles:Article[]){
 
 }
 
-getCustomer(){
-
 }
-}
-
 

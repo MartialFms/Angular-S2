@@ -12,7 +12,7 @@ export class CartComponent implements OnInit {
   articles: Article[] | undefined;
   article!: Article;
   storageKey: string = 'cartValue';
-  totalCart = 0;
+  totalCart! : number;
   tva!: number;
   constructor(private cartService: CartService, private router: Router) {}
 
@@ -35,13 +35,15 @@ export class CartComponent implements OnInit {
 
   updateCart() {
     this.cartService.updateCart(this.article?.id, this.article?.qty);
+    this.totalCart = this.getTotal();
     //this.storeCart();
   }
 
   getTotal() {
     let total = 0;
     for (var i = 0; i < this.articles!.length; i++) {
-      if (this.articles![i].qty) {
+      if(this.articles)
+      if (this.articles[i].qty) {
         total += this.articles![i].price * this.articles![i].qty;
         this.totalCart = total;
       }

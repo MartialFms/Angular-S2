@@ -1,15 +1,16 @@
+import { Customer } from "./customer";
+
 export class User {
   id: number;
-  login: String;
+  user : Customer;
   password: String;
-  customer : number;
+  isAdmin : boolean;
 
-constructor(id: number, login: String, password: String, customer : number)
+constructor(id: number, password: String, user : Customer, isAdmin : boolean)
 {
 this.id=id;
-this.login=login;
+this.user=user;
 this.password=password;
-this.customer=customer;
+this.isAdmin = isAdmin;
 }
-
 };

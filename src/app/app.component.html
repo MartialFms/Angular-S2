@@ -12,15 +12,23 @@
     <div class="col-4"><h1 class="text-white title">Les formation El Babili</h1></div>
 
   </div>
-  <div class="row centerPage">
-    <app-nav class="col-2 nav"></app-nav>
 
-      <app-articles class="row card col-7 article"></app-articles>
+  <button type="button" mdbBtn color="default" rounded="true" data-toggle="modal" data-target="#basicExample"
+(click)="showModal()" mdbWavesEffect>Launch Modal</button>
+
+    <app-nav class="col-2 nav"></app-nav>
+    <div class="row centerPage" [ngSwitch]="menu">
+      <div *ngSwitchCase="1"><app-articles class="row card col-7 article"></app-articles></div>
+      <div *ngSwitchCase="2"><app-customer class="row card col-7 article"></app-customer></div>
+      <div *ngSwitchCase="3"><app-auth class="row card col-7 article"></app-auth></div>
+      <div *ngSwitchDefault>Error 404</div>
+      <app-auth class="row card col-7 article"></app-auth>
+
+
 
       <app-cart class="row h60 col-3 cart"></app-cart>
       <router-outlet></router-outlet>
     </div>
-    <app-info></app-info>
 
   </div>
 

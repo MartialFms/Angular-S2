@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ArticlesComponent } from './components/articles/articles.component';
 import { CartComponent } from './components/cart/cart.component';
 import { TopComponent } from './components/top/top.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -11,6 +10,12 @@ import { CommonModule } from '@angular/common';
 import { CustomerComponent } from './components/user/customer/customer.component';
 import { AuthComponent } from './components/user/auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './test/modal/modal.component';
+import { UserComponent } from './components/user/user/user.component';
+import { ManageArticleComponent } from './components/articles/manage-article/manage-article.component';
+import { ManageUsersComponent } from './components/user/manage-users/manage-users.component';
+import { ArticlesComponent } from './components/articles/articles/articles.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -22,8 +27,11 @@ import { HttpClientModule } from '@angular/common/http';
     TopComponent,
     NavComponent,
     CustomerComponent,
-    AuthComponent
-
+    AuthComponent,
+    ModalComponent,
+    UserComponent,
+    ManageArticleComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    NgbModule
   ],
   providers: [
     AuthComponent

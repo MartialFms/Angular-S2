@@ -4,8 +4,11 @@ import { CartComponent } from './components/cart/cart.component';
 import { TopComponent } from './components/top/top.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundError } from 'rxjs';
-import { ArticlesComponent } from './components/articles/articles.component';
 import { AuthComponent } from './components/user/auth/auth.component';
+import { ModalComponent } from './test/modal/modal.component';
+import { UserComponent } from './components/user/user/user.component';
+import { CustomerComponent } from './components/user/customer/customer.component';
+import { ArticlesComponent } from './components/articles/articles/articles.component';
 
 const routes: Routes = [
   { path : 'articles' , component : ArticlesComponent },
@@ -13,9 +16,14 @@ const routes: Routes = [
   { path : 'topBar' , component : TopComponent },
   { path : 'navig' , component : NavComponent },
   { path : 'auth' , component : AuthComponent },
-  { path : '404' , component : NotFoundError },
-  { path : '**' , redirectTo : '/404' },
-  { path : '' , redirectTo : 'articles', pathMatch : 'full' }
+  { path : 'modal' , component : ModalComponent },
+  { path : 'user' , component : UserComponent },
+  { path : 'customer' , component : CustomerComponent },
+  { path : 'auth' , component : AuthComponent }
+  // { path : '404' , component : NotFoundError },
+  // { path : '**' , redirectTo : '/404' },
+  // { path : '' , redirectTo : 'articles', pathMatch : 'full' }
+  // { path : '**' , redirectTo : '/404' }
 
 ]
 

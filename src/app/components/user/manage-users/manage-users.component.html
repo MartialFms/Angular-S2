@@ -1,0 +1,252 @@
+<ng-container class="card">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Login</th>
+        <th scope="col">Password</th>
+        <th scope="col">Admin Right</th>
+        <th scope="col">
+          <button
+            class="btn btn-primary border-secondary text-white mx-2 h-25 align-items-end"
+            (click)="onCreateUser(newContent)"
+          >
+            Creer nouvel utilisateur
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <img src="{{ user.login }}" class="me-2" style="width: 35px" />
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.isAdmin }}</td>
+        <div *ngIf="user.isAdmin; else notAdmin">
+Administrateur
+        </div>
+        <ng-template #notAdmin>
+          <p>
+           Utilisateur
+          </p>
+        </ng-template>
+
+
+
+        <td>
+          <button
+            class="btn btn-success border-secondary mx-2 text-white"
+            color="primary"
+            (click)="onEditUser(editContent)"
+          >
+            Modifier
+          </button>
+          <button
+            class="btn btn-danger border-secondary text-white"
+            (click)="onDeleteUser(myModal)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #editContent let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Editer Utilisateur</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card mx-2 row bg-light">
+      <form #form="ngForm" (ngSubmit)="editUser(form.value)">
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Login</label>
+          <input
+            type="text"
+            ngModel
+            name="login"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Email</label>
+          <input
+            type="text"
+            ngModel
+            name="email"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Password</label>
+          <input
+            type="text"
+            ngModel
+            name="password"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Droits</label>
+          <input
+            type="checkbox"
+            ngModel
+            id="isAdmin"
+            name="isAdmin"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group p-4">
+          <div class="row">
+            <div class="col">
+              <button
+                type="submit"
+                class="btn btn-primary text-center"
+                [disabled]="!form.form.valid"
+              >
+                Modifier
+              </button>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark text-center"
+                (click)="offcanvas.close('Close click')"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #newContent let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Nouvel Utilisateur</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card mx-2 row bg-light">
+      <form #form="ngForm" (ngSubmit)="editUser(form.value)">
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Login</label>
+          <input
+            type="text"
+            ngModel
+            name="login"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Email</label>
+          <input
+            type="text"
+            ngModel
+            name="email"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Password</label>
+          <input
+            type="text"
+            ngModel
+            name="password"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Droits</label>
+          <input
+            type="checkbox"
+            ngModel
+            id="isAdmin"
+            name="isAdmin"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group p-4">
+          <div class="row">
+            <div class="col">
+              <button
+                type="submit"
+                class="btn btn-primary text-center"
+                [disabled]="!form.form.valid"
+              >
+                Creer
+              </button>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark text-center"
+                (click)="offcanvas.close('Close click')"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #myModal let-modal>
+  <div class="modal-header">
+    <div>Etes vous sure ?</div>
+  </div>
+  <div class="offset-md-2">
+    <button class="btn btn-lg btn-success mx-2" (click)="test(users)">
+      Oui
+    </button>
+    <!-- <button class="btn btn-lg btn-success mx-2" (click)="deleteUser(user)">
+      Oui
+    </button> -->
+    <button
+      class="btn btn-lg btn-danger mx-2"
+      (click)="modal.close('Save click')"
+    >
+      Non
+    </button>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Ok</button>
+  </div> -->
+</ng-template>

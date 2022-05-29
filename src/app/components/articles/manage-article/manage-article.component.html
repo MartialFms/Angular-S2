@@ -1,0 +1,220 @@
+<ng-container class="card">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Logo</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Prix</th>
+        <th scope="col">
+          <button
+            class="btn btn-primary border-secondary text-white mx-2 h-25 align-items-end"
+            (click)="onCreateArticle(newContent)"
+          >
+            Creer nouvelle formation
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>
+          <img src="{{ article.pict }}" class="me-2" style="width: 35px" />
+        </td>
+        <td>
+          {{ article.name }}
+        </td>
+        <td>{{ article.desc }}</td>
+        <td>{{ article.price }}</td>
+        <td>
+          <button
+            class="btn btn-success border-secondary mx-2 text-white"
+            color="primary"
+            (click)="onEditArticle(editContent)"
+          >
+            Modifier
+          </button>
+          <button
+            class="btn btn-danger border-secondary text-white"
+            (click)="onDeleteArticle(myModal)"
+          >
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #editContent let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Editer Formation</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card mx-2 row bg-light">
+      <form #form="ngForm" (ngSubmit)="editArticle(form.value)">
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Nom</label>
+          <input
+            type="text"
+            ngModel
+            name="name"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Description</label>
+          <textarea
+            type="text"
+            ngModel
+            name="desc"
+            cols="40"
+            rows="5"
+            required
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Prix</label>
+          <input
+            type="number"
+            ngModel
+            name="price"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group p-4">
+          <div class="row">
+            <div class="col">
+              <button
+                type="submit"
+                class="btn btn-primary text-center"
+                [disabled]="!form.form.valid"
+              >
+                Modifier
+              </button>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark text-center"
+                (click)="offcanvas.close('Close click')"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #newContent let-offcanvas>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Creation de formation</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="offcanvas.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="card mx-2 row bg-light">
+      <form #form="ngForm" (ngSubmit)="createArticle(form.value)">
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Nom</label>
+          <input
+            type="text"
+            ngModel
+            name="name"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Description</label>
+          <textarea
+            type="text"
+            ngModel
+            name="desc"
+            cols="40"
+            rows="5"
+            required
+            class="form-control"
+          ></textarea>
+        </div>
+
+        <div class="form-group mx-4 px-2">
+          <label class="control-label">Prix</label>
+          <input
+            type="number"
+            ngModel
+            name="price"
+            required
+            class="form-control"
+          />
+        </div>
+
+        <div class="form-group p-4">
+          <div class="row">
+            <div class="col">
+              <button
+                type="submit"
+                class="btn btn-primary text-center"
+                [disabled]="!form.form.valid"
+              >
+                Creer
+                <i class="fas fa-creative-commons-remix"></i>
+              </button>
+            </div>
+            <div class="col">
+              <button
+                type="button"
+                class="btn btn-outline-dark text-center"
+                (click)="offcanvas.close('Close click')"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #myModal let-modal>
+  <div class="modal-header">
+    <div>Etes vous sure ?</div>
+  </div>
+  <div class="offset-md-2">
+    <button class="btn btn-lg btn-success mx-2" (click)="deleteArticle()">
+      Oui
+    </button>
+    <button
+      class="btn btn-lg btn-danger mx-2"
+      (click)="modal.close('Save click')"
+    >
+      Non
+    </button>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Ok</button>
+  </div> -->
+</ng-template>

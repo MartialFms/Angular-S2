@@ -23,7 +23,7 @@ export class CustomerComponent implements OnInit {
     onSaveCustomer(formValue : Customer){
       console.log(" ajout de " + this.customer);
       const newId = this.customers.length+1
-      this.customer = {id: newId ,lastName:formValue.lastName,firstName:formValue.firstName,adress:formValue.adress,phone:formValue.phone,mail:formValue.mail,password:formValue.password,isAdmin:false}
+      this.customer = {id: newId ,lastName:formValue.lastName,firstName:formValue.firstName,adress:formValue.adress,phone:formValue.phone,mail:formValue.mail}
 
       if (this.checkIfCustomer(this.customer)){this.customers.push(this.customer);
         alert("Nouveau client ajouté")

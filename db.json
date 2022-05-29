@@ -48,9 +48,7 @@
       "firstName": "Martial",
       "adress": "2 rue de mon cul",
       "phone": "0608046526",
-      "mail": "md@fms.com",
-      "password": " ",
-      "isAdmin": false
+      "mail": "md@fms.com"
     },
     {
       "id": 2,
@@ -58,9 +56,7 @@
       "firstName": "Tristan",
       "adress": "15 rue jesaipahou",
       "phone": "0785648689",
-      "mail": "tl@fms.com",
-      "password": " ",
-      "isAdmin": false
+      "mail": "tl@fms.com"
     },
     {
       "id": 3,
@@ -68,9 +64,7 @@
       "firstName": "Sarah",
       "adress": "89 avenue des machins",
       "phone": "0684256474",
-      "mail": "sl@fms.com",
-      "password": " ",
-      "isAdmin": false
+      "mail": "sl@fms.com"
     },
     {
       "id": 4,
@@ -79,7 +73,43 @@
       "adress": "123 rue de la formation",
       "phone": "0684569313",
       "mail": "me@fms.com",
-      "password": " ",
+      "password": " "
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "login": "Martial",
+      "email": "md@fms.com",
+      "password": "fms",
+      "isAdmin": false
+    },
+    {
+      "id": 2,
+      "login": "tristan",
+      "email": "tl@fms.com",
+      "password": "fms",
+      "isAdmin": false
+    },
+    {
+      "id": 3,
+      "login": "Sarah",
+      "email": "sl@fms.com",
+      "password": "fms",
+      "isAdmin": false
+    },
+    {
+      "id": 4,
+      "login": "Mohamed",
+      "email": "me@fms.com",
+      "password": "fms",
+      "isAdmin": true
+    },
+    {
+      "id": 5,
+      "login": "test",
+      "email": "test@fms.com",
+      "password": "test",
       "isAdmin": true
     }
   ]

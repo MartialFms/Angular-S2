@@ -41,12 +41,12 @@ export class CartComponent implements OnInit {
 
   getTotal() {
     let total = 0;
-    for (var i = 0; i < this.articles!.length; i++) {
-      if(this.articles)
+    if(this.articles){
+          for (var i = 0; i < this.articles!.length; i++) {
       if (this.articles[i].qty) {
         total += this.articles![i].price * this.articles![i].qty;
         this.totalCart = total;
-      }
+      }}
     }
     return total;
   }

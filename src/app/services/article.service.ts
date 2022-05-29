@@ -13,4 +13,12 @@ export class ArticleService {
   public getArticles(){
     return this.http.get<Article[]>(environment.host+"/articles")
   }
+
+  public createArticle(article : Article){
+    return this.http.post(environment.host+"/users/create", article)
+  }
+
+
+  public deleteArticle(article : Article){
+  return this.http.delete(environment.host+"/users/"+article.id )}
 }
